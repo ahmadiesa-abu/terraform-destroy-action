@@ -51,8 +51,9 @@ runs:
           else:
             dep_ids = [dep.get('deployment_id') for dep in environments]
             raise Exception("Your name/labels may refer to these deployments {0} , please specify which one by using enviornemnt-id input".format(dep_ids))
-      - id: terraform_destroy
-       name: Execute terraform destroy
-       uses: cloudify-cosmo/delete-environment-action@v1.2
-       with:
-         environment-name: ${{ steps.check_if_deployment_exists.outputs.deployment_id }}
+    - id: terraform_destroy
+      if: ${{ steps.check_if_deployment_exists.outputs.exists == 'true' }}
+      name: Execute terraform destroy
+      uses: cloudify-cosmo/delete-environment-action@v1.2
+      with:
+       environment-name: ${{ steps.check_if_deployment_exists.outputs.deployment_id }}
