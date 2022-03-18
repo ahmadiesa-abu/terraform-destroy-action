@@ -50,7 +50,7 @@ runs:
             print ('::set-output name=deployment_id::{0}'.format(environments[0].get('deployment_id')))
           else:
             dep_ids = [dep.get('deployment_id') for dep in environments]
-            raise Exception("Your name/labels may refer to these deployments {0} , please specify which one by using enviornemnt-id input".format(dep_ids))
+            raise Exception("Your name/labels may refer to these deployments {0} , please specify which one by using environment-id input".format(dep_ids))
     - id: terraform_destroy
       if: ${{ steps.check_if_deployment_exists.outputs.exists == 'true' }}
       name: Execute terraform destroy
