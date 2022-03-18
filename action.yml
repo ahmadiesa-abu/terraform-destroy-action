@@ -5,10 +5,10 @@ branding:
   color: white
 inputs:
   environment-name:
-    description: Name of Cloudify environment to create
+    description: Name of Cloudify terraform environment to destroy
     required: true
   environment-id:
-    description: Id of Cloudify environment to create
+    description: Id of Cloudify terraform environment to destroy
     default: "-"
     required: false
   labels:
